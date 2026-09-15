@@ -1,0 +1,28 @@
+# Core Configuration & Logging (Phase 1)
+pydantic>=2.7.0,<3.0.0
+pydantic-settings>=2.2.0,<3.0.0
+python-dotenv>=1.0.1
+loguru>=0.7.2
+pytest>=8.0.0
+
+# Document Processing & Ingestion (Phase 2 - added in next step)
+# pypdf>=4.0.0
+# tiktoken>=0.7.0
+
+# Embeddings & Vector Stores (Phase 3)
+# chromadb>=0.5.0
+# sentence-transformers>=2.7.0
+
+# LLM Providers & Orchestration (Phases 4-7)
+# openai>=1.30.0
+# langchain>=0.2.0
+# langchain-openai>=0.1.7
+# langchain-community>=0.2.0
+# langchain-huggingface>=0.0.1
+
+# API & Web Framework (Phase 8)
+# fastapi>=0.111.0
+# uvicorn>=0.30.0
+
+# MCP (Phase 10)
+# mcp>=0.1.0

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledge-assistant"
+version = "0.1.0"
+description = "Enterprise AI Knowledge & Operations Assistant with RAG, Agents, and MCP"
+authors = [{ name = "Knowledge Assistant Team" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.7.0,<3.0.0",
+    "pydantic-settings>=2.2.0,<3.0.0",
+    "python-dotenv>=1.0.1",
+    "loguru>=0.7.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "ruff>=0.4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
