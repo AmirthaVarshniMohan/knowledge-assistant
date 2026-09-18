@@ -10,8 +10,8 @@ pypdf>=4.0.0
 tiktoken>=0.7.0
 
 # Embeddings & Vector Stores (Phase 3)
-# chromadb>=0.5.0
-# sentence-transformers>=2.7.0
+chromadb>=0.5.0
+sentence-transformers>=2.7.0
 
 # LLM Providers & Orchestration (Phases 4-7)
 # openai>=1.30.0
