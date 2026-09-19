@@ -12,6 +12,18 @@ from knowledge_assistant.rag.vector_store import (
     BaseVectorStore,
     ChromaVectorStore,
 )
+from knowledge_assistant.rag.llm_base import (
+    BaseLLMProvider,
+    LLMResponse,
+    MockLLMProvider,
+)
+from knowledge_assistant.rag.prompts import (
+    DEFAULT_SYSTEM_PROMPT,
+    RAG_USER_TEMPLATE,
+    format_context,
+)
+from knowledge_assistant.rag.retriever import Retriever
+from knowledge_assistant.rag.pipeline import RAGPipeline, RAGResponse
 
 __all__ = [
     "SearchResult",
@@ -22,4 +34,13 @@ __all__ = [
     "EmbeddingFactory",
     "BaseVectorStore",
     "ChromaVectorStore",
+    "BaseLLMProvider",
+    "LLMResponse",
+    "MockLLMProvider",
+    "DEFAULT_SYSTEM_PROMPT",
+    "RAG_USER_TEMPLATE",
+    "format_context",
+    "Retriever",
+    "RAGPipeline",
+    "RAGResponse",
 ]
