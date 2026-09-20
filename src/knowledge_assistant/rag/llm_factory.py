@@ -5,6 +5,7 @@ from loguru import logger
 from knowledge_assistant.core.config import get_settings
 from knowledge_assistant.rag.llm_base import BaseLLMProvider, MockLLMProvider
 from knowledge_assistant.rag.openai_provider import OpenAILLMProvider
+from knowledge_assistant.rag.huggingface_provider import HuggingFaceLLMProvider
 
 
 class LLMFactory:
@@ -25,10 +26,15 @@ class LLMFactory:
         elif ptype in {"openai"}:
             logger.info("Instantiating OpenAI LLM provider.")
             return OpenAILLMProvider(model_name=model_name or settings.openai_model_name)
+        elif ptype in {"huggingface", "hf"}:
+            logger.info("Instantiating Hugging Face LLM provider.")
+            return HuggingFaceLLMProvider(model_name=model_name or settings.hf_llm_model)
         else:
-            # If OPENAI_API_KEY is available in settings, default to OpenAI, otherwise fallback to Mock
+            # Fallback priority: OpenAI -> HuggingFace -> Mock
             if settings.openai_api_key:
                 return OpenAILLMProvider(model_name=model_name or settings.openai_model_name)
+            elif settings.huggingfacehub_api_token:
+                return HuggingFaceLLMProvider(model_name=model_name or settings.hf_llm_model)
             else:
-                logger.warning("No OPENAI_API_KEY detected. Using MockLLMProvider fallback.")
+                logger.warning("No LLM API keys detected. Using MockLLMProvider fallback.")
                 return MockLLMProvider(model_name=model_name or "mock-enterprise-llm")
