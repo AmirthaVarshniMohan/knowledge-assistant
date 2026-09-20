@@ -15,10 +15,10 @@ sentence-transformers>=2.7.0
 
 # LLM Providers & Orchestration (Phases 5-7)
 openai>=1.30.0
-# langchain>=0.2.0
-# langchain-openai>=0.1.7
-# langchain-community>=0.2.0
-# langchain-huggingface>=0.0.1
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.7
 
 # API & Web Framework (Phase 8)
 # fastapi>=0.111.0

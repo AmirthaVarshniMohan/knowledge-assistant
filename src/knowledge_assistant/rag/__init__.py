@@ -27,6 +27,11 @@ from knowledge_assistant.rag.prompts import (
 )
 from knowledge_assistant.rag.retriever import Retriever
 from knowledge_assistant.rag.pipeline import RAGPipeline, RAGResponse
+from knowledge_assistant.rag.langchain_adapter import (
+    LangChainRAGAdapter,
+    LangChainVectorRetriever,
+    CustomLoggingCallbackHandler,
+)
 
 __all__ = [
     "SearchResult",
@@ -49,4 +54,7 @@ __all__ = [
     "Retriever",
     "RAGPipeline",
     "RAGResponse",
+    "LangChainRAGAdapter",
+    "LangChainVectorRetriever",
+    "CustomLoggingCallbackHandler",
 ]
