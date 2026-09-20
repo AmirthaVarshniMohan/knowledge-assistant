@@ -17,6 +17,8 @@ from knowledge_assistant.rag.llm_base import (
     LLMResponse,
     MockLLMProvider,
 )
+from knowledge_assistant.rag.openai_provider import OpenAILLMProvider
+from knowledge_assistant.rag.llm_factory import LLMFactory
 from knowledge_assistant.rag.prompts import (
     DEFAULT_SYSTEM_PROMPT,
     RAG_USER_TEMPLATE,
@@ -37,6 +39,8 @@ __all__ = [
     "BaseLLMProvider",
     "LLMResponse",
     "MockLLMProvider",
+    "OpenAILLMProvider",
+    "LLMFactory",
     "DEFAULT_SYSTEM_PROMPT",
     "RAG_USER_TEMPLATE",
     "format_context",
