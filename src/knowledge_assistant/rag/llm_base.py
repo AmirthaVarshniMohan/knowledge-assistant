@@ -70,18 +70,29 @@ class MockLLMProvider(BaseLLMProvider):
         temperature: float = 0.0,
         max_tokens: int = 1000,
     ) -> LLMResponse:
-        # If context is empty or says "No relevant context found"
-        if "NO_CONTEXT_AVAILABLE" in prompt or "No relevant context found" in prompt:
+        # Extract question if prompt has 'User Question:'
+        question = prompt
+        if "User Question:" in prompt:
+            question = prompt.split("User Question:")[1].split("\n")[0].strip()
+
+        question_lower = question.lower()
+
+        # If context is empty or question is about unknown topic
+        if "NO_CONTEXT_AVAILABLE" in prompt or "quantum" in question_lower:
             content = "I do not have sufficient information in the provided documentation to answer this question."
-        elif "MFA" in prompt or "Multi-Factor Authentication" in prompt:
+        elif "mfa" in question_lower or "multi-factor" in question_lower or "authentication" in question_lower:
             content = "According to [Source: security.md, Page: 1], Multi-Factor Authentication (MFA) is mandatory for corporate email accounts, VPN tunnels, and code repositories."
-        elif "stipend" in prompt or "equipment" in prompt:
+        elif "stipend" in question_lower or "equipment" in question_lower or "remote" in question_lower:
             content = "According to [Source: faq.txt, Page: 1], full-time employees receive a one-time $500 home office equipment stipend within 60 days of their start date."
         else:
-            content = f"Based on the provided documents: The answer relates to your query: {prompt[:80]}..."
+            content = f"Based on the provided documents: The answer relates to your query: {question[:80]}..."
 
         return LLMResponse(
             content=content,
             model_name=self.model_name,
-            token_usage={"prompt_tokens": len(prompt.split()), "completion_tokens": len(content.split()), "total_tokens": len(prompt.split()) + len(content.split())}
+            token_usage={
+                "prompt_tokens": len(prompt.split()),
+                "completion_tokens": len(content.split()),
+                "total_tokens": len(prompt.split()) + len(content.split()),
+            },
         )
